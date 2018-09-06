@@ -1,0 +1,52 @@
+﻿@model Crud_New.Models.ProductCategory
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+<hr />
+<div>
+    <h1>Delete Product </h1>
+    <form method="post" class="form-group" id="DeleteProduct">
+        <span class="form-inline">
+                Product ID :
+            <input name="ProductId" readonly="readonly" asp-for="ProductId" class="form-control" value="@Model.ProductId" />
+            </span>
+            <br />
+            <br />
+       
+        <span class="form-inline">
+            Product Name :
+            <input asp-for="ProductName" name="ProductName" readonly="readonly" class="form-control" value="@Model.ProductName"></input>
+        </span>
+        <br />
+        <br />
+        
+        <br />
+    </form>
+    <input type="submit" value="Delete" class="btn btn-primary" data-attr="Edit_Product" />
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $('[data-attr="Edit_Product"]').on('click', function () {
+        $.ajax(
+            {
+                url: "/Home/Delete",
+                type: "POST",
+                data: $('#DeleteProduct').serialize(),
+                success: function (response) {
+                    console.log(response)
+                    window.location.href = 'http://localhost:50742/'
+
+
+                },
+                Error: function (err) {
+                    // console.log(err)
+                }
+            });
+    });
+</script>
+
+@*<script src="~/js/insertMovie.js"></script>*@
+
+

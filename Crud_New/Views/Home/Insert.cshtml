@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "Insert";
+}
+
+<h2>Insert</h2>
+
+<div>
+    <h1>Add Product </h1>
+    <form method="post" class="form-group" id="AddProduct">
+        @*<span class="form-inline">
+            Product ID :
+            <input type="number" name="ProductId" class="form-control" />
+        </span>
+        <br />
+        <br />*@
+        <span class="form-inline">
+            Product Name :
+            &nbsp;&nbsp;<input type="text" name="ProductName" class="form-control" />
+        </span>
+        <br />
+        <br />
+        <span class="form-inline">
+            Price of Product :
+            <input type="number" name="ProductPrice" class="form-control" />
+        </span>
+        
+        <br />
+        <br />
+        <span class="form-inline">
+            Category Name :
+          
+            <select class="form-control" name="CategoryId"> <option "0">Select</option>
+                
+                <option value="1" >Fruits</option>
+                <option value="2">Chocolate</option>
+                <option value="3">Biscuits</option>
+            </select>
+        </span>
+        <br />
+        <br />
+        @*<span class="form-inline">
+            Date :
+            <input type="string" name="DateCreated" class="form-control" />
+        </span>*@
+        <label>
+        </label>
+        <br />
+    </form>
+    <input type="submit" value="Add" class="btn btn-primary" data-attr="Add_Product" />
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $('[data-attr="Add_Product"]').on('click', function () {
+        $.ajax(
+            {
+                url: "/Home/Insert",
+                type: "POST",
+                data: $('#AddProduct').serialize(),
+                success: function (response) {
+                    console.log(response)
+                    window.location.href = 'http://localhost:50742/'
+
+
+                },
+                Error: function (err) {
+                    // console.log(err)
+                }
+            });
+    });
+</script>
+
+@*<script src="~/js/insertMovie.js"></script>*@
+

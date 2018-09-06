@@ -1,0 +1,48 @@
+﻿@model Crud_New.Models.ProductCategory
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h2>Details</h2>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductPrice)
+        </dd>
+       
+    </dl>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $('[data-attr="Edit_Product"]').on('click', function () {
+        $.ajax(
+            {
+                url: "/Home/Delete",
+                type: "POST",
+                data: $('#DeleteProduct').serialize(),
+                success: function (response) {
+                    console.log(response)
+                    window.location.href = 'http://localhost:50742/'
+
+
+                },
+                Error: function (err) {
+                    // console.log(err)
+                }
+            });
+    });
+</script>
+
+@*<script src="~/js/insertMovie.js"></script>*@
+
+

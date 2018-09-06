@@ -1,0 +1,81 @@
+﻿
+
+@model Crud_New.Models.ProductCategory
+@{
+    ViewData["Title"] = "Edit";
+}
+<h2>Edit Product</h2>
+<hr />
+<div>
+    <h1>Edit Product </h1>
+    <form method="post" class="form-group" id="EditProduct">
+        @*<span class="form-inline">
+            Product ID :
+            <input type="number" name="ProductId" class="form-control" />
+        </span>
+        <br />
+        <br />*@
+        <span class="form-inline">
+            Product Id :
+            <input type="text" 
+asp-for="ProductId" value="@Model.ProductId" name="ProductId" class="form-control" />
+        </span>
+        <br />
+        <br />
+        <span class="form-inline">
+            Product Name :
+            <input type="text" asp-for="ProductName" value="@Model.ProductName" name="ProductName" class="form-control" />
+        </span>
+        <br />
+        <br />
+        <span class="form-inline">
+            Price of Product :
+            <input type="number" asp-for="ProductPrice" value="@Model.ProductPrice" name="ProductPrice" class="form-control" />
+        </span>
+        <br />
+        <br />
+        @*<span class="form-inline">
+            Category Id :
+            <input type="number" name="CategoryId" class="form-control" />
+        </span>
+        <br />
+        <br />*@
+        <span class="form-inline">
+            Category Name :
+            <input type="text" name="CategoryName" asp-for="CategoryName" value="@Model.CategoryName" class="form-control" readonly="readonly" />
+        </span>
+        <br />
+        <br />
+        <span class="form-inline">
+            Date :
+            <input type="text" name="DateCreated" asp-for="DateCreated" value="@Model.DateCreated" class="form-control" readonly="readonly" />
+        </span>
+        <label>
+        </label>
+        <br />
+    </form>
+    <input type="submit" value="Edit" class="btn btn-primary" data-attr="Edit_Product" />
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $('[data-attr="Edit_Product"]').on('click', function () {
+        $.ajax(
+            {
+                url: "/Home/Edit",
+                type: "POST",
+                data: $('#EditProduct').serialize(),
+                success: function (response) {
+                    console.log(response)
+                    window.location.href = 'http://localhost:50742/'
+
+
+                },
+                Error: function (err) {
+                    // console.log(err)
+                }
+            });
+    });
+</script>
+
+@*<script src="~/js/insertMovie.js"></script>*@
+
